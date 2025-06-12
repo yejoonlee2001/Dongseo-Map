@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동서대학교 카페 맵</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+    
+    <!-- 커스텀 스타일시트 -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Leaflet JavaScript (CSS 다음에 로드) -->
+    <script>
+        // 기존 L 변수 백업 및 충돌 방지
+        var _leafletBackup = window.L;
+    </script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+    <script>
+        // Leaflet 객체를 별도 네임스페이스로 보존
+        window.LeafletMap = window.L;
+        // 기존 L 변수 복원 (필요시)
+        if (_leafletBackup) window.L = _leafletBackup;
+    </script>
+</head>
+<body>
+    <header>
+        <h1>동서대학교 카페 맵</h1>
+        <p>동서대학교 내 카페 위치와 메뉴를 확인하세요</p>
+    </header>
+
+    <main>
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 동서대학교 카페 맵 | OpenStreetMap 기반</p>
+    </footer>
+
+    <!-- 카페 데이터 및 메인 스크립트 -->
+    <script src="cafe-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
